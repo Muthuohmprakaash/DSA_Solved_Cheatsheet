@@ -5,6 +5,7 @@ import java.util.*;
 public class PascalsTriangle3 {
     public static void main(String[] args) {
         System.out.println(printPascal(5));
+        System.out.println(Arrays.deepToString(pascalTriangleMatrixReturn(5)));
     }
     private static List<List<Integer>> printPascal(int n){
           List<List<Integer>> ans = new ArrayList<>();
@@ -24,5 +25,26 @@ public class PascalsTriangle3 {
 
 
           return ans;
+    }
+    private static int[][] pascalTriangleMatrixReturn(int n){
+        int[][] ans = new int[n][];
+        int k = 1;
+        int l =0;
+        for(int i =0;i<n;i++){
+            ans[l++] = new int[k++];
+            for(int j = 0;j<=i;j++){
+                if(j == 0 || j==i){
+                    ans[i][j] = 1;
+                }else{
+                    ans[i][j]=ans[i-1][j-1] + ans[i-1][j]; 
+                }
+            }
+            
+        }
+
+
+
+          return ans;
+
     }
 }
